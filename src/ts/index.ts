@@ -1,23 +1,20 @@
 
-$(function() {
-    document.addEventListener('deviceready', onDeviceReady, false);
-    function onDeviceReady() {
-        console.log('deviceready');
-        console.log(device.platform);
-        alert(device.platform);
-    }
 
-    $("#button1").click(function() {
-        console.log('click!!');
+$(function () {
+	document.addEventListener('deviceready', onDeviceReady, false);
+	function onDeviceReady() {
+		console.log('deviceready');
+		console.log(device.platform);
 
-		$("#div1").dialog({
-			modal:true, //モーダル表示
-			title:"テストダイアログ1", //タイトル
-			buttons: { //ボタン
-			"確認": function() {
-				$(this).dialog("close");
-				}
-			}
-		});
-	});
+		console.log(sprintf('%05d',99));
+
+
+		start();
+	}
+
+	function start() {
+		setTimeout(function(){
+			$('.input').css("visibility","visible");
+		},3000);
+	}
 });

@@ -32,8 +32,8 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
         <link rel="stylesheet" type="text/css" href="css/destyle.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
 
         <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
         <link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.min.css">
@@ -41,15 +41,30 @@
 
         <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
         <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="app/lib/sub.js"></script>
+        <script type="text/javascript" src="js/hammer.min.js"></script>
+        <script type="text/javascript" src="js/sprintf.js"></script>
+        <script type="text/javascript" src="app/logic.js"></script>
         <title>Hello World</title>
     </head>
     <body>
         <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+            <!-- <div id="test"></div> -->
+            <div id="main_content">
+                <p id="title">さめがめ</p>
+                <div id="board">
+                </div>
+                <div id="controller">
+                    <img class="block cood_0y0x" src="./img/blocks/001.png">
+                    <span class="countet001">1</span>
+                    <img class="block cood_0y0x" src="./img/blocks/002.png">
+                    <span class="countet001">2</span>
+                    <img class="block cood_0y0x" src="./img/blocks/003.png">
+                    <span class="countet001">3</span>
+                    <img class="block cood_0y0x" src="./img/blocks/004.png">
+                    <span class="countet001">4</span>
+                    <img class="block cood_0y0x" src="./img/blocks/005.png">
+                    <span class="countet001">5</span>
+                </div>
             </div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>

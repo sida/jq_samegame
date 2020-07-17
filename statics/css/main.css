@@ -1,0 +1,58 @@
+body {
+    background-color: lightgray;
+    font-family: system-ui, -apple-system, -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
+
+.app {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+#main_content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 480px;
+    width: 640px;
+    transform-origin: 0 0;
+}
+
+#title {
+    position: relative;
+    width: 640px;
+    height: 20px;
+    line-height: 20px;
+}
+
+#board {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 640px;
+    height: 320px;
+    font-size: 0;
+    background-color: black;
+}
+
+.block {
+    width: 32px;
+    height: 32px;
+}
+
+#controller {
+    position: relative;
+    width: 640px;
+    height: 40px;
+    padding-top: 4px;
+    background-color: lightgray;
+}
