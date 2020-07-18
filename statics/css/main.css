@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "digital";
+    src: url("../fonts/LettersLaughingattheirExecution.ttf") format("truetype");
+}
+
 body {
     background-color: lightgray;
     font-family: system-ui, -apple-system, -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
@@ -5,6 +10,7 @@ body {
     margin: 0px;
     padding: 0px;
     width: 100%;
+    font-family: "digital";
 }
 
 .app {
@@ -16,6 +22,7 @@ body {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
+    font-size: 16px;
 }
 
 #main_content {
@@ -27,12 +34,48 @@ body {
     transform-origin: 0 0;
 }
 
-#title {
+#header {
     position: relative;
     width: 640px;
-    height: 20px;
-    line-height: 20px;
+    height: 30px;
+    line-height: 30px;
 }
+
+#title {
+    width: 50%;
+    float: left;
+}
+
+#score_container{
+    margin-right: 1em;
+    margin-left: 1em;
+    float: right;
+}
+
+#score_title {
+    margin-right: 0.5em;
+    float: left;
+}
+
+#score {
+    float: left;
+}
+
+#rest_container {
+    margin-right: 1em;
+    margin-left: 1em;
+    float: right;
+}
+
+#rest_title {
+    margin-right: 0.5em;
+    float: left;
+}
+
+#rest_blocks {
+    float: left;
+}
+
 
 #board {
     position: relative;
@@ -49,10 +92,20 @@ body {
     height: 32px;
 }
 
-#controller {
+#footer {
     position: relative;
     width: 640px;
-    height: 40px;
+    height: 30px;
     padding-top: 4px;
     background-color: lightgray;
+}
+
+.counter {
+    float: left;
+    width: 65px;
+}
+
+.counter_block {
+    width: 16px;
+    height: 16px;
 }

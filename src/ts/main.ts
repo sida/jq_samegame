@@ -46,6 +46,10 @@ $(function () {
             }
             $("#board").append('<br />');
         }
+
+        updateCounterView();
+        updateScoreView();
+        updateRestBlocksView();
     }
 
     function createBlockId(pos: BoardPosition) {
@@ -53,8 +57,11 @@ $(function () {
     }
 
     function onClickBlock(x: number, y: number) {
-        // TODO ブロック選択 or 解除
-        console.log({ x: x, y: y });
+        if (logic.isGameEnd()) {
+            resetSelectViewBlock();
+            selectBlockPostionList = [];
+            return;
+        }
 
         if (isSelected()) {
             // 選択中なので解除
@@ -70,8 +77,6 @@ $(function () {
     function setSelectViewBlock(list: BoardPosition[]) {
         list.forEach(pos => {
             let block = getBlockJQueryElement(pos);
-            console.log(block);
-
             block.css({
                 filter: "opacity(75%)"
             });
@@ -88,24 +93,39 @@ $(function () {
 
     function getBlockJQueryElement(pos: BoardPosition): JQuery<Element> {
         let id = createBlockId(pos);
-        return $('#'+id);
+        return $('#' + id);
     }
 
     function reloadBlockView() {
         for (let iy = 9; iy >= 0; iy--) {
             for (let ix = 0; ix < 20; ix++) {
                 let blockImagFilePath = sprintf('./img/blocks/%03d.png', logic.lookBlock({ x: ix, y: iy }));
-                getBlockJQueryElement({x:ix,y:iy}).attr({
-                    src:blockImagFilePath
-                }).css({filter: "opacity(100%)"});
+                getBlockJQueryElement({ x: ix, y: iy }).attr({
+                    src: blockImagFilePath
+                }).css({ filter: "opacity(100%)" });
             }
         }
+    }
+
+    function updateCounterView() {
+        for (let ii = 1; ii <= 5; ii++) {
+            let id = sprintf('#counter%03d', ii);
+            $(id).text(logic.getRest(ii));
+        }
+    }
+
+    function updateScoreView() {
+        $('#score').text(sprintf('%04d',logic.getScore()));
+    }
+
+    function updateRestBlocksView() {
+        $('#rest_blocks').text(sprintf('%04d',logic.getAllRest()));
     }
 
     function blockEditer(f: (elem: JQuery<Element>) => void) {
         for (let iy = 9; iy >= 0; iy--) {
             for (let ix = 0; ix < 20; ix++) {
-                f($('#'+createBlockId({ x: ix, y: iy })));
+                f($('#' + createBlockId({ x: ix, y: iy })));
             }
         }
     }
@@ -136,12 +156,26 @@ $(function () {
             // 選択しているブロックが無い
             return;
         }
+        if (logic.isGameEnd()) {
+            return;
+        }
         logic.deleteBlock(selectBlockPostionList[0]);
         logic.cleanEmpty();
         logic.createEmptyCol();
         selectBlockPostionList = [];
         // 全ブロックの表示更新
         reloadBlockView();
+        updateCounterView();
+        updateScoreView();
+        updateRestBlocksView();
+
+        if (logic.isGameEnd()) {
+            if (logic.getAllRest() == 0) {
+                console.log('compleat');
+            }
+            // TODO
+            console.log('end game');
+        }
     }
 
 });
