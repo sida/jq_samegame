@@ -47,11 +47,32 @@
         <title>Hello World</title>
     </head>
     <body>
-        <div class="app">
-            <!-- <div id="test"></div> -->
+            <div id="dialog">
+                <div id="dialog_mask"></div>
+
+                <div id="dialog_game_end" class="dialog_base">
+                    <p class="dialog_game_end_title">ゲーム終了</p>
+                    <p class="dialog_game_end_message">コンプリート！！</p>
+                    <div class="dialog_footer footer_1btn">
+                        <button class="btn_base btn_ok">OK</button>
+                    </div>
+                </div>
+
+                <div id="dialog_confirm_new_game" class="dialog_base">
+                    <p class="dialog_confirm_message">最初からやり直しますか？</p>
+                    <div class="dialog_footer footer_2btn">
+                        <button class="btn_base btn_ok">YES</button>
+                        <button class="btn_base btn_cancel">NO</button>
+                    </div>
+                </div>
+            </div>
+            <div class="app">
             <div id="main_content">
                 <div id="header">
-                    <div id="title">SAME GAME</div>
+                    <div id="title">
+                        <img id="title_icon" src="./img/same.png">
+                        <div id="title_string">SAME GAME</div>
+                    </div>
                     <div id="rest_container">
                         <div id="rest_title">BLOCKS</div>
                         <div id="rest_blocks">000</div>

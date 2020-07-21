@@ -20,6 +20,13 @@ $(function () {
         setTimeout(() => { onResize(); }, 100);
     });
 
+    $('#title_icon').click(()=>{
+        console.log('click icon');
+        openDialogConfirmNewGame(
+            ()=>{console.log('ok');},
+            ()=>{console.log('cancel');});
+    });
+
     let detector = new Hammer(this.body);
     detector.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
     detector.on('swipeup', () => {
@@ -175,7 +182,42 @@ $(function () {
             }
             // TODO
             console.log('end game');
+            openDialogEndGame(
+                ()=>{console.log('end!!')},
+                logic.getAllRest() == 0
+            );
         }
+    }
+
+    function openDialogEndGame(okCallBack:()=>void, isComplete:boolean) {
+        $('#dialog').show();
+        $('#dialog_game_end').show();
+        $('#dialog_confirm_new_game').hide();
+
+        $('.dialog_game_end_message').hide();
+        if (isComplete) {
+            $('.dialog_game_end_message').show();
+        }
+        $('.btn_ok').click(()=>{
+            $('#dialog').hide();
+            okCallBack();
+        });
+    }
+
+    function openDialogConfirmNewGame(okCallBack:()=>void, cancelCallBack:()=>void) {
+        $('#dialog').show();
+        $('#dialog_game_end').hide();
+        $('#dialog_confirm_new_game').show();
+
+        $('.btn_ok').click(()=>{
+            $('#dialog').hide();
+            okCallBack();
+        });
+
+        $('.btn_cancel').click(()=>{
+            $('#dialog').hide();
+            cancelCallBack();
+        });
     }
 
 });
