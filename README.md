@@ -20,6 +20,9 @@ Xcodeのインストール済み
 npm i
 
 プラットフォーム追加
+### ブラウザ
+cordova platform add browser
+
 ### ios
 cordova platform add ios
 
